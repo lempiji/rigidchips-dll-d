@@ -1,0 +1,8 @@
+name "rigidchips-dll-d"
+description "template for the dll of Lua extensions"
+copyright "Copyright © 2016, lempiji"
+authors "lempiji"
+targetName "sample"
+targetType "dynamicLibrary"
+sourceFiles "main.def"
+libs "lua50"

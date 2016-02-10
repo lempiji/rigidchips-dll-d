@@ -6,10 +6,12 @@
 *.so
 *.dylib
 *.dll
+!lua50.dll
 
 # Compiled Static libraries
 *.a
 *.lib
+!lua50.lib
 
 # Executables
 *.exe

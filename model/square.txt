@@ -1,0 +1,61 @@
+//BasicCar
+Val
+{
+	Brake(default=0,min=0,max=80,step=80)
+	HBrake(default=0,min=0,max=100,step=100)
+	Handle(default=0,min=-20,max=20,step=5)
+	Engine(default=0,min=-2500,max=2500,step=2500)
+}
+Key
+{
+	0:Engine(step=-500)
+	1:Engine(step=500)
+	2:Handle(step=-0.5)
+	3:Handle(step=0.5)
+	7:Brake(step=30),HBrake(step=20)
+	8:HBrake(step=20)
+}
+Body {
+	Core(){
+		N:Chip(){
+			N:Rudder(angle=Handle){
+				W:Frame(){
+					W:Wheel(angle=90,brake=Brake){
+					}
+				}
+				E:Frame(){
+					E:Wheel(angle=90,brake=Brake){
+					}
+				}
+			}
+		}
+		S:Chip(){
+			W:Frame(){
+				W:Wheel(angle=90,power=Engine,brake=HBrake){
+				}
+			}
+			E:Frame(){
+				E:Wheel(angle=90,power=-Engine,brake=HBrake){
+				}
+			}
+		}
+	}
+}
+Lua
+{
+if loadlib~=nil then
+	local open_dll, err = loadlib("sample.dll", "open_dll");
+	if f~=nil then
+		open_dll();
+	end
+end
+
+function OnFrame()
+	out(0, _FPS());
+	out(1, type(loadlib));
+	out(2, type(square));
+	out(4, type(err));
+	out(5, err);
+	out(7, square(10));
+end
+}
